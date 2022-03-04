@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- See https://docs.kde.org/stable5/en/applications/katepart/highlight.html -->
+
+<language name="bdl" version="1" kateversion="5.88" section="Sources" extensions="*.bdl;*.BDL" author="Mitchell T. Paulus" >
+    <highlighting>
+        <list name="Keywords">
+            <item>INPUT</item>
+            <item>TITLE</item>
+            <item>DIAGNOSTIC</item>
+            <item>ABORT</item>
+            <item>RUN-PERIOD</item>
+            <item>SCHEDULE</item>
+            <item>WEEK-SCHEDULE</item>
+            <item>DAY-SCHEDULE</item>
+            <item>SITE-PARAMETERS</item>
+            <item>BUILD-PARAMETERS</item>
+            <item>LAYERS</item>
+            <item>CONSTRUCTION</item>
+            <item>GLASS-TYPE</item>
+            <item>SPACE</item>
+            <item>EXTERIOR-WALL</item>
+            <item>ROOF</item>
+            <item>WINDOW</item>
+            <item>DOOR</item>
+            <item>INTERIOR-WALL</item>
+            <item>UNDERGROUND-WALL</item>
+            <item>UNDERGROUND-FLOOR</item>
+            <item>LOADS-REPORT</item>
+            <item>SYSTEM</item>
+            <item>ZONE</item>
+            <item>DAY-RESET-SCH</item>
+            <item>RESET-SCHEDULE</item>
+            <item>SYSTEMS-REPORT</item>
+            <item>ELEC-METER</item>
+            <item>FUEL-METER</item>
+            <item>MASTER-METERS</item>
+            <item>PUMP</item>
+            <item>CIRCULATION-LOOP</item>
+            <item>BOILER</item>
+            <item>CHILLER</item>
+            <item>HEAT-REJECTION</item>
+            <item>DW-HEATER</item>
+            <item>UTILITY-RATE</item>
+            <item>BLOCK-CHARGE</item>
+            <item>ECONOMICS-REPORT</item>
+        </list>
+        <contexts>
+            <context name="Normal" attribute="Normal" lineEndContext="#pop">
+                <keyword attribute="Keyword" context="#stay" String="Keywords" weakDeliminator="-" />
+                <DetectChar attribute="String" context="String" char="&quot;" />
+                <DetectChar attribute="Comment" context="Comment" char="$" />
+            </context>
+
+            <context name="Comment" attribute="Comment" lineEndContext="#pop">
+                <DetectChar attribute="Comment" context="#pop" char="$" />
+            </context>
+
+            <context name="String" attribute="String" lineEndContext="#pop">
+                <DetectChar attribute="String" context="#pop"         char="&quot;" />
+                <!-- Not perfect escaping, but good enough for now. -->
+                <DetectChar attribute="String" context="StringEscape" char="\" />
+            </context>
+
+            <context name="StringEscape" attribute="String">
+                <DetectChar attribute="String" context="#pop" char="&quot;" />
+            </context>
+        </contexts>
+
+        <itemDatas>
+            <itemData name="Normal"         defStyleNum="dsNormal" />
+            <itemData name="Keyword"        defStyleNum="dsKeyword" />
+            <itemData name="DataType"       defStyleNum="dsDataType" />
+            <itemData name="DecVal"         defStyleNum="dsDecVal" />
+            <itemData name="BaseN"          defStyleNum="dsBaseN" />
+            <itemData name="Float"          defStyleNum="dsFloat" />
+            <itemData name="Constant"       defStyleNum="dsConstant" />
+            <itemData name="Char"           defStyleNum="dsChar" />
+            <itemData name="SpecialChar"    defStyleNum="dsSpecialChar" />
+            <itemData name="String"         defStyleNum="dsString" />
+            <itemData name="VerbatimString" defStyleNum="dsVerbatimString" />
+            <itemData name="SpecialString"  defStyleNum="dsSpecialString" />
+            <itemData name="Import"         defStyleNum="dsImport" />
+            <itemData name="Comment"        defStyleNum="dsComment" />
+            <itemData name="Documentation"  defStyleNum="dsDocumentation" />
+            <itemData name="Annotation"     defStyleNum="dsAnnotation" />
+            <itemData name="CommentVar"     defStyleNum="dsCommentVar" />
+            <itemData name="Others"         defStyleNum="dsOthers" />
+            <itemData name="Function"       defStyleNum="dsFunction" />
+            <itemData name="Variable"       defStyleNum="dsVariable" />
+            <itemData name="ControlFlow"    defStyleNum="dsControlFlow" />
+            <itemData name="Operator"       defStyleNum="dsOperator" />
+            <itemData name="BuiltIn"        defStyleNum="dsBuiltIn" />
+            <itemData name="Extension"      defStyleNum="dsExtension" />
+            <itemData name="Preprocessor"   defStyleNum="dsPreprocessor" />
+            <itemData name="Attribute"      defStyleNum="dsAttribute" />
+            <itemData name="RegionMarker"   defStyleNum="dsRegionMarker" />
+            <itemData name="Information"    defStyleNum="dsInformation" />
+            <itemData name="Warning"        defStyleNum="dsWarning" />
+            <itemData name="Alert"          defStyleNum="dsAlert" />
+            <itemData name="Error"          defStyleNum="dsError" />
+        </itemDatas>
+    </highlighting>
+    <general>
+        <keywords casesensitive="1" />
+    </general>
+</language>
+
+
+
+
+
